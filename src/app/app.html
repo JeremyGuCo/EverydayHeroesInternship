@@ -1,0 +1,24 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Exercices</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button padding ion-button icon-start (click)="onNavigate(exercise1)">
+        <ion-icon name="fastforward"></ion-icon>
+        Exercice 1
+      </button>
+      <button ion-button icon-start (click)="onNavigate(exercise2)">
+        <ion-icon name="fastforward"></ion-icon>
+        Exercice 2
+      </button>
+      <button ion-button icon-start (click)="onNavigate(exercise3)">
+        <ion-icon name="fastforward"></ion-icon>
+        Exercice 3
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav [root]="rootPage" #content></ion-nav>
