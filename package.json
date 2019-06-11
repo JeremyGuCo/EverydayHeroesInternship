@@ -56,8 +56,7 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-android-permissions": {}
+      "cordova-plugin-ionic-webview": {}
     },
     "platforms": [
       "browser",

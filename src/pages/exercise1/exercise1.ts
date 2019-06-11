@@ -2,13 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 
-/**
- * Generated class for the Exercise1Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @Component({
   selector: 'page-exercise1',
   templateUrl: 'exercise1.html',

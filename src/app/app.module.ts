@@ -15,6 +15,7 @@ import { Exercise2Page } from '../pages/exercise2/exercise2';
 import { Exercise3Page } from '../pages/exercise3/exercise3';
 import { File } from '@ionic-native/file';
 
+
 @NgModule({
   declarations: [
     MyApp,

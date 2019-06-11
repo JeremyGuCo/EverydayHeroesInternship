@@ -12,10 +12,10 @@
 </ion-header>
 
 <ion-content text-center class="bg-style">
-  <h2 id="titleInt" text-center no-margin padding-top>
+  <h2 class="titleInt" text-center no-margin padding-top>
     Déjà
   </h2>
-  <h1 id="titleEnd" text-center no-margin>
+  <h1 class="titleEnd" text-center no-margin>
     <strong>108</strong> vies sauvées !
   </h1>
   <ion-grid>
@@ -35,7 +35,7 @@
       </ion-row>
 
     <ion-row>
-      <ion-col col-4 *ngFor="let temoignage of filterData | paginate: { itemsPerPage: 10, currentPage: p }">
+      <ion-col col-md-4 cold-sm-6 *ngFor="let temoignage of filterData | paginate: { itemsPerPage: 10, currentPage: p }">
         <ion-card class="card" padding>
             <ion-row>
                 <ion-col col-8 offset-2>

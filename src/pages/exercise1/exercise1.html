@@ -1,36 +1,36 @@
 <ion-header>
-    <ion-navbar color="primary" align-title="center">
-      <ion-buttons start>
-        <button ion-button icon-only (click)="onToggleMenu()">
-          <ion-icon name="menu"></ion-icon>
-        </button>
-      </ion-buttons>
-      <ion-title>
-        <img src={{logo}} heigth="15px">
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
-  
-  <ion-content text-center class="bg-style">
-    <h2 text-center no-margin padding-top>
-      Déjà
-    </h2>
-    <h1 text-center no-margin>
-      <strong>108</strong> vies sauvées !
-    </h1>
-    <ion-grid>
-      <ion-row>
-        <ion-col col-sm-4>
-          <p text-start class="temoignage p-style" no-margin padding-bottom>Témoignages</p>
-        </ion-col>
-      </ion-row>
+  <ion-navbar color="primary" align-title="center">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="onToggleMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      <img src={{logo}} heigth="15px">
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content text-center class="bg-style">
+  <h2 class="titleInt" text-center no-margin padding-top>
+    Déjà
+  </h2>
+  <h1 class="titleEnd" text-center no-margin>
+    <strong>108</strong> vies sauvées !
+  </h1>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-sm-4>
+        <p text-start class="temoignage p-style" no-margin padding-bottom>Témoignages</p>
+      </ion-col>
+    </ion-row>
   
       <ion-row>
         <ion-col col-sm-4 *ngFor="let temoignage of temoignagesList">
           <ion-card class="card" padding>
             <ion-row>
               <ion-col col-8 offset-2>
-                <ion-card-header no-padding>
+                <ion-card-header no-padding class="name">
                   {{temoignage.firstName}} {{temoignage.lastName}}
                 </ion-card-header>
                 <ion-datetime no-padding displayFormat="le DD/MM/YY" [(ngModel)]="temoignage.date"></ion-datetime>

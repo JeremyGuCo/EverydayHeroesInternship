@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { File } from '@ionic-native/file';
-import { AndroidPermissions } from '@ionic-native/android-permissions';
+
 
 
 
@@ -23,8 +23,7 @@ export class Exercise3Page {
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public http: HttpClient,
-    private file: File,
-    private androidPermissions: AndroidPermissions,) {
+    private file: File,) {
   }
 
   onToggleMenu() {
@@ -32,16 +31,7 @@ export class Exercise3Page {
   }
 
   ionViewDidLoad(): void {
-    this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
-      result => console.log('Has permission?',result.hasPermission),
-      err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
-    );
     
-    this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA, this.androidPermissions.PERMISSION.GET_ACCOUNTS]);
-
-
-
-
     this.http.get('./assets/data/dataMock.json').subscribe(data => {
       this.temoignages = data;
       console.log(this.temoignages)});
@@ -49,7 +39,7 @@ export class Exercise3Page {
       .get('http://localhost:8000/tests/retrieve-data.php')
       .subscribe((data: any) => {
         this.temoignagesList = data.testimonies;
-        this.file.writeFile(this.file.dataDirectory,"dataMock.json", JSON.stringify(this.temoignagesList), {append: true}).then(_=>console.log('Ok!')).catch(err=>console.log(err))
+        this.file.writeFile('./assets/data/dataMock.json',"dataMock.json", JSON.stringify(this.temoignagesList), {append: true}).then(_=>console.log('Ok!')).catch(err=>console.log(err))
         this.filterData = this.temoignagesList;
       })
   }
