@@ -15,6 +15,7 @@ import { Exercise3Page } from '../pages/exercise3/exercise3';
 import { File } from '@ionic-native/file';
 import { HeaderPage } from '../shared/header/header';
 import { TestimonyService } from '../shared/services/testimony.service';
+import { CardPage } from '../shared/card/card';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { TestimonyService } from '../shared/services/testimony.service';
     MyApp,
     HomePage,
     HeaderPage,
+    CardPage,
     Exercise1Page,
     Exercise2Page,
     Exercise3Page,
@@ -38,6 +40,7 @@ import { TestimonyService } from '../shared/services/testimony.service';
     MyApp,
     HomePage,
     HeaderPage,
+    CardPage,
     Exercise1Page,
     Exercise2Page,
     Exercise3Page,

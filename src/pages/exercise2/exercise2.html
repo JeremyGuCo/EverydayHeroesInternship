@@ -17,7 +17,9 @@
 
     <ion-row>
       <ion-col col-sm-4 *ngFor="let testimony of testimonies">
-        <ion-card class="card" padding>
+        <page-card [testimony]="testimony"></page-card>
+
+        <!-- <ion-card class="card" padding>
           <ion-row>
             <ion-col col-8 offset-2>
               <ion-card-header no-padding class="name">
@@ -29,7 +31,7 @@
           <ion-card-content text-left>
             {{testimony.content}}
           </ion-card-content>
-        </ion-card>
+        </ion-card> -->
       </ion-col>
     </ion-row>
   </ion-grid>

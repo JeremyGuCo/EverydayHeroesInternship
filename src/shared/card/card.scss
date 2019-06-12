@@ -1,0 +1,10 @@
+page-card {
+  .card {
+    border-radius: 5px;
+    min-height: 25em;
+  }
+
+  ion-datetime {
+    border-bottom: 1px color($colors, primary) solid;
+  }
+}
