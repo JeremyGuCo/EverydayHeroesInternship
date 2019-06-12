@@ -9,18 +9,19 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ExercisesPage } from '../pages/exercises/exercises';
 import { Exercise1Page } from '../pages/exercise1/exercise1';
 import { Exercise2Page } from '../pages/exercise2/exercise2';
 import { Exercise3Page } from '../pages/exercise3/exercise3';
 import { File } from '@ionic-native/file';
+import { HeaderPage } from '../shared/header/header';
+import { TestimonyService } from '../shared/services/testimony.service';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ExercisesPage,
+    HeaderPage,
     Exercise1Page,
     Exercise2Page,
     Exercise3Page,
@@ -36,12 +37,13 @@ import { File } from '@ionic-native/file';
   entryComponents: [
     MyApp,
     HomePage,
-    ExercisesPage,
+    HeaderPage,
     Exercise1Page,
     Exercise2Page,
     Exercise3Page,
   ],
   providers: [
+    TestimonyService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

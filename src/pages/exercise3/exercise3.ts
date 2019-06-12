@@ -2,7 +2,8 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { Testimony } from '../../models/testimony';
+import { Testimony } from '../../shared/models/testimony';
+import { TestimonyService } from '../../shared/services/testimony.service';
 
 
 
@@ -19,16 +20,7 @@ export class Exercise3Page {
   public filterTestimonies: Testimony[] = [];
   public p: number = 1;
 
-  constructor(
-    public navCtrl: NavController,
-    public menuCtrl: MenuController,
-    public http: HttpClient,
-  ) {
-  }
-
-
-  onToggleMenu() {
-    this.menuCtrl.open();
+  constructor(private service: TestimonyService) {
   }
 
   ionViewDidLoad(): void {
@@ -36,12 +28,10 @@ export class Exercise3Page {
     /**
      * Récupération de la base de données
      */
-    this.http
-      .get<Testimony[]>('http://localhost:8000/tests/retrieve-data.php')
-      .subscribe((data: any) => {
-        this.testimonies = data.testimonies;
-        this.filterTestimonies = this.testimonies;
-      })
+    this.service.getAll().subscribe((data: any) => {
+      this.testimonies = data.testimonies;
+      this.filterTestimonies = this.testimonies;
+    })
   }
 
   /**

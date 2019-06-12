@@ -16,7 +16,8 @@ import {
 } from 'rxjs/Observable';
 import {
   Testimony
-} from '../../models/testimony';
+} from '../../shared/models/testimony';
+import { TestimonyService } from '../../shared/services/testimony.service';
 
 @Component({
   selector: 'page-exercise2',
@@ -27,28 +28,18 @@ export class Exercise2Page {
   logo: any = "assets/imgs/Logo-EverydayHeroes-White.png";
   public testimonies: Testimony[] = [];
 
-  constructor(
-    public navCtrl: NavController,
-    public menuCtrl: MenuController,
-    public http: HttpClient,
-    private file: File, ) {}
-
-  onToggleMenu() {
-    this.menuCtrl.open();
-  }
+  constructor(private service: TestimonyService) { }
 
   ionViewWillEnter(): void {
     /**
      * Récupération de la base de données
      */
-    this.http
-      .get < Testimony[] > ('http://localhost:8000/tests/retrieve-data.php')
-      .subscribe((data: any) => {
-          this.testimonies = data.testimonies;
-        },
-        (error: any) => {
-          console.dir(error);
-        });
+    this.service.getAll().subscribe((data: any) => {
+      this.testimonies = data.testimonies;
+    },
+      (error: any) => {
+        console.dir(error);
+      });
   }
 
 
