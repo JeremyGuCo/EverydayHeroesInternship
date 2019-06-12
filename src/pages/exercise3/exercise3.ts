@@ -2,7 +2,8 @@
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { File } from '@ionic-native/file';
+import { Testimonies } from '../../models/testimonies';
+
 
 
 
@@ -14,36 +15,39 @@ import { File } from '@ionic-native/file';
 export class Exercise3Page {
 
   logo: any = "assets/imgs/Logo-EverydayHeroes-White.png";
-  public temoignagesList: any;
-  public temoignages: any;
-  public test: any;
+  public temoignagesList: Testimonies[]=[];
   public filterData = [];
   public p: number = 1;
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public http: HttpClient,
-    private file: File,) {
+    ) {
   }
+
 
   onToggleMenu() {
     this.menuCtrl.open();
   }
 
   ionViewDidLoad(): void {
-    
-    this.http.get('./assets/data/dataMock.json').subscribe(data => {
-      this.temoignages = data;
-      console.log(this.temoignages)});
+
+/**
+ * Récupération de la base de données
+ */
     this.http
-      .get('http://localhost:8000/tests/retrieve-data.php')
+      .get<Testimonies[]>('http://localhost:8000/tests/retrieve-data.php')
       .subscribe((data: any) => {
         this.temoignagesList = data.testimonies;
-        this.file.writeFile('./assets/data/dataMock.json',"dataMock.json", JSON.stringify(this.temoignagesList), {append: true}).then(_=>console.log('Ok!')).catch(err=>console.log(err))
         this.filterData = this.temoignagesList;
       })
   }
 
+  /**
+   * Méthode de filtrage des données
+   * @param ev 
+   */
   setFilteredWords(ev) {
     var val = ev.target.value;
     if (val && val.trim() != '') {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { Testimonies } from '../../models/testimonies';
 
 @Component({
   selector: 'page-exercise1',
@@ -9,23 +10,25 @@ import { HttpClient } from '@angular/common/http';
 
 export class Exercise1Page {
   temoignagesList: any;
-  logo: any = "assets/imgs/Logo-EverydayHeroes-White.png";
+  logo: string = "assets/imgs/Logo-EverydayHeroes-White.png";
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public menuCtrl: MenuController,
-    public http: HttpClient,) {
+    public http: HttpClient, ) {
   }
 
   onToggleMenu() {
     this.menuCtrl.open();
   }
 
+    /**
+     * Récupération des données json
+     */
   ionViewWillEnter() {
-     this.http.get('./assets/data/dataMock.json').subscribe(data => {
+    this.http.get('./assets/data/dataMock.json').subscribe(data=> {
       this.temoignagesList = data;
-      console.log(this.temoignagesList)
- });
- }
+    });
+  }
 
 }

@@ -1,7 +1,9 @@
-
 import { Component } from '@angular/core';
 import { NavController, MenuController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { File } from '@ionic-native/file';
+import { Observable } from 'rxjs/Observable';
+import { Testimonies } from '../../models/testimonies';
 
 @Component({
   selector: 'page-exercise2',
@@ -10,13 +12,14 @@ import { HttpClient } from '@angular/common/http';
 export class Exercise2Page {
 
   logo: any = "assets/imgs/Logo-EverydayHeroes-White.png";
-  public temoignagesList: any;
+  public temoignagesList: Testimonies[]=[];
   public temoignages: any;
-  public test: any;
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
-    public http: HttpClient) {
+    public http: HttpClient,
+    private file: File, ) {
   }
 
   onToggleMenu() {
@@ -24,28 +27,33 @@ export class Exercise2Page {
   }
 
   ionViewWillEnter(): void {
-    this.load();
-  }
 
-
-  load(): void {
+    /**
+     *  Récupération des données json
+     */
     this.http.get('./assets/data/dataMock.json').subscribe(data => {
       this.temoignages = data;
-      console.log(this.temoignages)});
+    });
+     this.file.copyFile(this.file.applicationDirectory + '/www/assets/data', 'dataMock.json', this.file.applicationStorageDirectory, 'dataMock.json')
+     .then(_=>console.log('Ok!')).catch(err=>console.log(err));
+     this.file.writeFile(this.file.applicationStorageDirectory,'dataMock.json',JSON.stringify(this.temoignagesList), {append: true})
+     .then(_=>console.log('Ok!')).catch(err=>console.log(err))
+    
+    /**
+     * Récupération de la base de données
+     */
     this.http
-      .get('http://localhost:8000/tests/retrieve-data.php')
+      .get<Testimonies[]>('http://localhost:8000/tests/retrieve-data.php')
       .subscribe((data: any) => {
-        this.temoignagesList = this.temoignages.concat(data.testimonies) ;
-        console.log(data)
-        console.log(this.temoignagesList);
+        this.temoignagesList = data.testimonies ;
       },
         (error: any) => {
           console.dir(error);
         });
   }
 
-   
-   }
+
+}
 
 
 
