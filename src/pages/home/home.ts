@@ -7,8 +7,6 @@ import { MenuController } from 'ionic-angular';
 })
 export class HomePage {
 
-  logo: any = "assets/imgs/Logo-EverydayHeroes-White.png";
-  
   constructor(private menuCtrl: MenuController) { }
 
   openMenu() {

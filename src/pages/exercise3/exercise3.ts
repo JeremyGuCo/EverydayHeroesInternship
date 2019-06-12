@@ -1,13 +1,6 @@
-
 import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
 import { Testimony } from '../../shared/models/testimony';
 import { TestimonyService } from '../../shared/services/testimony.service';
-
-
-
-
 
 @Component({
   selector: 'page-exercise3',
@@ -15,7 +8,6 @@ import { TestimonyService } from '../../shared/services/testimony.service';
 })
 export class Exercise3Page {
 
-  logo: any = "assets/imgs/Logo-EverydayHeroes-White.png";
   public testimonies: Testimony[] = [];
   public filterTestimonies: Testimony[] = [];
   public p: number = 1;

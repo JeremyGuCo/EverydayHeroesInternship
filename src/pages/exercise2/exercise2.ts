@@ -1,22 +1,5 @@
-import {
-  Component
-} from '@angular/core';
-import {
-  NavController,
-  MenuController
-} from 'ionic-angular';
-import {
-  HttpClient
-} from '@angular/common/http';
-import {
-  File
-} from '@ionic-native/file';
-import {
-  Observable
-} from 'rxjs/Observable';
-import {
-  Testimony
-} from '../../shared/models/testimony';
+import { Component } from '@angular/core';
+import { Testimony } from '../../shared/models/testimony';
 import { TestimonyService } from '../../shared/services/testimony.service';
 
 @Component({
@@ -25,12 +8,12 @@ import { TestimonyService } from '../../shared/services/testimony.service';
 })
 export class Exercise2Page {
 
-  logo: any = "assets/imgs/Logo-EverydayHeroes-White.png";
   public testimonies: Testimony[] = [];
 
   constructor(private service: TestimonyService) { }
 
   ionViewWillEnter(): void {
+
     /**
      * Récupération de la base de données
      */
