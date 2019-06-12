@@ -25,7 +25,7 @@ $data = [];
 
 
 // Attempt to query database table and retrieve data
-$stmt = $pdo->query('SELECT firstName, lastName, date, content FROM temoignages ORDER BY date ASC');
+$stmt = $pdo->query('SELECT firstName, lastName, date, content FROM temoignages ORDER BY date DESC');
 $a = $stmt->rowCount();
 
 if($a) {

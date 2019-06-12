@@ -1,4 +1,4 @@
-export class Testimonies {
+export class Testimony {
    constructor(
       public firstName: string,
       public lastName: string,

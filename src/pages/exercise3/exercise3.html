@@ -21,32 +21,33 @@
   <ion-grid>
     <ion-row>
       <ion-col col-sm-4 no-padding class="temoignage">
-          <ion-row>
-      <ion-col col-6>
-        <p text-start class="p-style" no-margin no-padding>Témoignages</p>
+        <ion-row>
+          <ion-col col-6>
+            <p text-start class="p-style" no-margin no-padding>Témoignages</p>
+          </ion-col>
+          <ion-col col-6>
+            <ion-searchbar ion-hide-sm no-margin no-padding [(ngModel)]="searchTerm"
+              (ionInput)="setFilteredWords($event)" placeholder="Recherche">
+            </ion-searchbar>
+          </ion-col>
+        </ion-row>
       </ion-col>
-        <ion-col col-6>
-          <ion-searchbar ion-hide-sm no-margin no-padding [(ngModel)]="searchTerm" (ionInput)="setFilteredWords($event)" 
-          placeholder="Recherche" >
-          </ion-searchbar>
-        </ion-col>
-      </ion-row>
-    </ion-col>
-      </ion-row>
+    </ion-row>
 
     <ion-row>
-      <ion-col col-md-4 cold-sm-6 *ngFor="let temoignage of filterData | paginate: { itemsPerPage: 10, currentPage: p }">
+      <ion-col col-md-4 cold-sm-6
+        *ngFor="let testimony of filterTestimonies | paginate: { itemsPerPage: 10, currentPage: p }">
         <ion-card class="card" padding>
-            <ion-row>
-                <ion-col col-8 offset-2>
-          <ion-card-header no-padding class="name">
-            {{temoignage.firstName}} {{temoignage.lastName}}
-          </ion-card-header>
-          <ion-datetime no-padding displayFormat="le DD/MM/YY" [(ngModel)]="temoignage.date"></ion-datetime>
-        </ion-col>
-      </ion-row>
+          <ion-row>
+            <ion-col col-8 offset-2>
+              <ion-card-header no-padding class="name">
+                {{testimony.firstName}} {{testimony.lastName}}
+              </ion-card-header>
+              <ion-datetime no-padding displayFormat="le DD/MM/YY" [(ngModel)]="testimony.date"></ion-datetime>
+            </ion-col>
+          </ion-row>
           <ion-card-content text-left>
-            {{temoignage.content}}
+            {{testimony.content}}
           </ion-card-content>
         </ion-card>
       </ion-col>

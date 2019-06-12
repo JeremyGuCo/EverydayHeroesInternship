@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { Testimonies } from '../../models/testimonies';
+import { Testimony } from '../../models/testimony';
 
 @Component({
   selector: 'page-exercise1',
@@ -9,7 +9,7 @@ import { Testimonies } from '../../models/testimonies';
 })
 
 export class Exercise1Page {
-  temoignagesList: any;
+  testimonies: Testimony[];
   logo: string = "assets/imgs/Logo-EverydayHeroes-White.png";
   constructor(
     public navCtrl: NavController,
@@ -22,13 +22,13 @@ export class Exercise1Page {
     this.menuCtrl.open();
   }
 
-    /**
-     * Récupération des données json
-     */
+  /**
+   * Récupération des données json
+   */
   ionViewWillEnter() {
-    this.http.get('./assets/data/dataMock.json').subscribe(data=> {
-      this.temoignagesList = data;
+    this.http.get<Testimony[]>('./assets/data/dataMock.json').subscribe(data => {
+      this.testimonies = data;
     });
   }
-
+  
 }

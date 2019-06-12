@@ -26,18 +26,18 @@
     </ion-row>
 
     <ion-row>
-      <ion-col col-sm-4 *ngFor="let temoignage of temoignagesList">
+      <ion-col col-sm-4 *ngFor="let testimony of testimonies">
         <ion-card class="card" padding>
           <ion-row>
             <ion-col col-8 offset-2>
               <ion-card-header no-padding class="name">
-                {{temoignage.firstName}} {{temoignage.lastName}}
+                {{testimony.firstName}} {{testimony.lastName}}
               </ion-card-header>
-              <ion-datetime no-padding displayFormat="le DD/MM/YY" [(ngModel)]="temoignage.date"></ion-datetime>
+              <ion-datetime no-padding displayFormat="le DD/MM/YY" [(ngModel)]="testimony.date"></ion-datetime>
             </ion-col>
           </ion-row>
           <ion-card-content text-left>
-            {{temoignage.content}}
+            {{testimony.content}}
           </ion-card-content>
         </ion-card>
       </ion-col>

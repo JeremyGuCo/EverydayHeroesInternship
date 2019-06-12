@@ -20,14 +20,15 @@
   font-style: normal;
   font-weight: normal;
   src: url('/src/assets/fonts/GothamMedium.ttf') format('ttf');
-  }
-  
-  @font-face {
-    font-family: 'Gotham Bold';
-    font-style: normal;
-    font-weight: normal;
-    src: url('/src/assets/fonts/GothamBold.ttf') format('ttf');
-    }
+}
+
+@font-face {
+  font-family: 'Gotham Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/src/assets/fonts/GothamBold.ttf') format('ttf');
+}
+
 * {
   font-family: 'Gotham Medium';
 }
@@ -36,7 +37,7 @@
   background: linear-gradient(to bottom, #ffffff 0%, #f5f5f5 53%);
 }
 
-.p-style{
+.p-style {
   font-size: 1.4em;
 }
 

@@ -1,9 +1,22 @@
-import { Component } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
-import { File } from '@ionic-native/file';
-import { Observable } from 'rxjs/Observable';
-import { Testimonies } from '../../models/testimonies';
+import {
+  Component
+} from '@angular/core';
+import {
+  NavController,
+  MenuController
+} from 'ionic-angular';
+import {
+  HttpClient
+} from '@angular/common/http';
+import {
+  File
+} from '@ionic-native/file';
+import {
+  Observable
+} from 'rxjs/Observable';
+import {
+  Testimony
+} from '../../models/testimony';
 
 @Component({
   selector: 'page-exercise2',
@@ -12,41 +25,27 @@ import { Testimonies } from '../../models/testimonies';
 export class Exercise2Page {
 
   logo: any = "assets/imgs/Logo-EverydayHeroes-White.png";
-  public temoignagesList: Testimonies[]=[];
-  public temoignages: any;
+  public testimonies: Testimony[] = [];
 
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public http: HttpClient,
-    private file: File, ) {
-  }
+    private file: File, ) {}
 
   onToggleMenu() {
     this.menuCtrl.open();
   }
 
   ionViewWillEnter(): void {
-
-    /**
-     *  Récupération des données json
-     */
-    this.http.get('./assets/data/dataMock.json').subscribe(data => {
-      this.temoignages = data;
-    });
-     this.file.copyFile(this.file.applicationDirectory + '/www/assets/data', 'dataMock.json', this.file.applicationStorageDirectory, 'dataMock.json')
-     .then(_=>console.log('Ok!')).catch(err=>console.log(err));
-     this.file.writeFile(this.file.applicationStorageDirectory,'dataMock.json',JSON.stringify(this.temoignagesList), {append: true})
-     .then(_=>console.log('Ok!')).catch(err=>console.log(err))
-    
     /**
      * Récupération de la base de données
      */
     this.http
-      .get<Testimonies[]>('http://localhost:8000/tests/retrieve-data.php')
+      .get < Testimony[] > ('http://localhost:8000/tests/retrieve-data.php')
       .subscribe((data: any) => {
-        this.temoignagesList = data.testimonies ;
-      },
+          this.testimonies = data.testimonies;
+        },
         (error: any) => {
           console.dir(error);
         });
@@ -54,10 +53,3 @@ export class Exercise2Page {
 
 
 }
-
-
-
-
-
-
-
